@@ -1,17 +1,73 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+
 import "./index.css";
-import App from "./App";
+
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
+
 import { Provider } from "react-redux";
-import store from "./store";
+import store from "./redux";
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Home, Menu, Navigation, HandlingDevice, Science, Camera, Logs, NotFound } from "./pages";
+
+const router = createBrowserRouter([
+	{
+		path: "/",
+		element: <Home />,
+	},
+	{
+		path: "/menu",
+		element: <Menu />,
+	},
+	{
+		path: "/navigation/auto",
+		element: <Navigation />,
+	},
+	{
+		path: "/navigation/semi-auto",
+		element: <Navigation />,
+	},
+	{
+		path: "/navigation/manual",
+		element: <Navigation />,
+	},
+	{
+		path: "/handlingDevice/auto",
+		element: <HandlingDevice />,
+	},
+	{
+		path: "/handlingDevice/manual",
+		element: <HandlingDevice />,
+	},
+	{
+		path: "/science/data",
+		element: <Science />,
+	},
+	{
+		path: "/science/drill",
+		element: <Science />,
+	},
+	{
+		path: "/camera",
+		element: <Camera />,
+	},
+	{
+		path: "/logs",
+		element: <Logs />,
+	},
+	{
+		path: "*",
+		element: <NotFound />,
+	},
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
 	<React.StrictMode>
 		<Provider store={store}>
-			<App />
+			<RouterProvider router={router} />
 		</Provider>
 	</React.StrictMode>
 );
