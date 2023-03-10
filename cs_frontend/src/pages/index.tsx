@@ -9,5 +9,8 @@ import HandlingDevice from "./handlingDevice";
 import ManualTask from "./manualNavigation";
 import Science from "./science";
 import Logs from "./logs";
+import Camera from "./camera";
+import Menu from "./menu";
+import NotFound from "./notFound";
 
-export { Home, Navigation, HandlingDevice, ManualTask, Science, Logs };
+export { Home, Navigation, HandlingDevice, ManualTask, Science, Logs, Camera, Menu, NotFound };
