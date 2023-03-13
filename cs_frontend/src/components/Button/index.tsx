@@ -75,7 +75,9 @@ export default ({
 					if (!disabled) onClick();
 				}}
 			>
-				{icon}
+				<div className={styles.iconContainer}>
+					{React.cloneElement(icon, { className: styles.icon })}
+				</div>
 				<p className={`${styles.text} ${sizeStyle}`}>{text}</p>
 			</button>
 		);

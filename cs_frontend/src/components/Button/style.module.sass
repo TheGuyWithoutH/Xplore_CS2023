@@ -2,7 +2,7 @@
 
 .button
     display: flex
-    padding: 20px 30px
+    padding: 10px 20px
     flex-direction: row
     justify-content: space-around
     align-items: center
@@ -43,12 +43,23 @@
 
 .text
     width: 100%
+    height: fit-content
     text-align: center
     margin: 0
 
 .disabled
     opacity: 0.7
     cursor: not-allowed
+
+.iconContainer
+    width: 3vw
+    aspect-ratio: 1/1
+    margin: 0 0.5rem
+
+.icon
+    width: 100% !important
+    height: 100% !important
+    color: $textLightColor
 
 .small
     font-weight: 300

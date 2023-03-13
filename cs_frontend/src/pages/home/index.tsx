@@ -6,6 +6,8 @@ import Logo from "../../components/Logo";
 import { Size } from "../../utils/size.type";
 import { Themes } from "../../utils/themes";
 import styles from "./style.module.sass";
+import MenuBookRoundedIcon from "@mui/icons-material/MenuBookRounded";
+import AddToDriveRoundedIcon from "@mui/icons-material/AddToDriveRounded";
 
 export default () => {
 	const navigate = useNavigate();
@@ -31,6 +33,7 @@ export default () => {
 					radius={15}
 					text="Documentation"
 					theme={Themes.DARK}
+					icon={<MenuBookRoundedIcon />}
 					onClick={() =>
 						window.open(
 							"https://hospitable-taste-374.notion.site/Xplore-Wiki-for-Software-Engineers-and-Roboticists-5615d07f70814ab0b3901beb31920236",
@@ -42,13 +45,13 @@ export default () => {
 					radius={15}
 					text="Drive"
 					theme={Themes.DARK}
+					icon={<AddToDriveRoundedIcon />}
 					onClick={() =>
 						window.open(
 							"https://drive.google.com/drive/folders/0AEpe4eawL6pdUk9PVA",
 							"_blank"
 						)
 					}
-					disabled
 				/>
 			</div>
 		</div>
