@@ -1,5 +1,10 @@
 import React from "react";
+import Background from "../../components/Background";
 
 export default () => {
-	return <div>index</div>;
+	return (
+		<div>
+			<Background />
+		</div>
+	);
 };

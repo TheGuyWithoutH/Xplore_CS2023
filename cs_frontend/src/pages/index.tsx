@@ -13,4 +13,6 @@ import Camera from "./camera";
 import Menu from "./menu";
 import NotFound from "./notFound";
 
+export const DefaultPage = () => <Home />;
+
 export { Home, Navigation, HandlingDevice, ManualTask, Science, Logs, Camera, Menu, NotFound };
