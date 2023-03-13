@@ -1,0 +1,64 @@
+@import '../../styles/variables'
+
+.button
+    display: flex
+    padding: 20px 30px
+    flex-direction: row
+    justify-content: space-around
+    align-items: center
+    cursor: pointer
+
+    &:hover
+        scale: 1.1
+
+    &:focus
+        scale: 1.1
+
+.plain
+    border: 0 !important
+
+.outline
+    background-color: transparent !important
+    border: 3px solid $textLightColor !important
+
+.light
+    background-color: $textLightColor
+    border-color: $textLightColor
+    color: $primaryDark2Color !important
+
+.dark
+    background-color: $primaryDark2Color
+    border-color: $primaryDark2Color
+    color: $textLightColor !important
+
+.brown
+    background-color: $secondaryColor
+    border-color: $secondaryColor
+    color: $textLightColor !important
+
+.grey
+    background-color: $secondaryLight1Color
+    border-color: $secondaryLight1Color
+    color: $textLightColor !important
+
+.text
+    width: 100%
+    text-align: center
+    margin: 0
+
+.disabled
+    opacity: 0.7
+    cursor: not-allowed
+
+.small
+    font-weight: 300
+    font-size: 2vw
+
+.medium
+    font-weight: 400
+    font-size: 2.5vw
+
+.large
+    font-weight: 500
+    font-size: 3vw
+    margin: 3px 25px
