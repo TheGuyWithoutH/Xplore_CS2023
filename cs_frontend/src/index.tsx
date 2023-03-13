@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import "./index.css";
+import "./styles/_global.sass";
+import "./styles/_typography.sass";
 
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
