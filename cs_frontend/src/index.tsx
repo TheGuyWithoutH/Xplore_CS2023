@@ -12,6 +12,7 @@ import store from "./redux";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Home, Menu, Navigation, HandlingDevice, Science, Camera, Logs, NotFound } from "./pages";
+import { Mode } from "./utils/mode.type";
 
 const router = createBrowserRouter([
 	{
@@ -24,15 +25,15 @@ const router = createBrowserRouter([
 	},
 	{
 		path: "/navigation/auto",
-		element: <Navigation />,
+		element: <Navigation mode={Mode.AUTONOMOUS} />,
 	},
 	{
 		path: "/navigation/semi-auto",
-		element: <Navigation />,
+		element: <Navigation mode={Mode.SEMI_AUTONOMOUS} />,
 	},
 	{
 		path: "/navigation/manual",
-		element: <Navigation />,
+		element: <Navigation mode={Mode.MANUAL} />,
 	},
 	{
 		path: "/handlingDevice/auto",
