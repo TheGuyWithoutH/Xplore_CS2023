@@ -30,6 +30,7 @@ export default () => {
 			</div>
 			<div className={styles.footer}>
 				<Button
+					size={Size.MEDIUM}
 					radius={15}
 					text="Documentation"
 					theme={Themes.DARK}
@@ -42,6 +43,7 @@ export default () => {
 					}
 				/>
 				<Button
+					size={Size.MEDIUM}
 					radius={15}
 					text="Drive"
 					theme={Themes.DARK}

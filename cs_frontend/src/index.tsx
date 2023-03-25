@@ -37,11 +37,11 @@ const router = createBrowserRouter([
 	},
 	{
 		path: "/handlingDevice/auto",
-		element: <HandlingDevice />,
+		element: <HandlingDevice mode={Mode.AUTONOMOUS} />,
 	},
 	{
 		path: "/handlingDevice/manual",
-		element: <HandlingDevice />,
+		element: <HandlingDevice mode={Mode.MANUAL} />,
 	},
 	{
 		path: "/science/data",
