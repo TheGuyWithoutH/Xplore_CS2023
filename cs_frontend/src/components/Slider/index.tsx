@@ -18,7 +18,7 @@ export default function App({ label }: Props) {
 			<input
 				type="range"
 				min="1"
-				max="500"
+				max="100"
 				value={value}
 				onChange={({ target: { value: radius } }) => {
 					onChange(parseInt(radius));
