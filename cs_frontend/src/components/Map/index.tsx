@@ -28,6 +28,13 @@ const Map = () => {
 	);
 };
 
+//Solution: Have two canvas maybe
+/** Have two canvas :
+ * One where you draw the image and everything around it
+ * One where we draw the quadrillage et le repère
+ * modulariser ça pour que ce soit plus compréhensible
+ */
+
 const drawMap = (canvas: HTMLCanvasElement) => {
 	const ctx = canvas.getContext("2d");
 	if (!ctx) return;
@@ -36,7 +43,7 @@ const drawMap = (canvas: HTMLCanvasElement) => {
 	img.src = map;
 
 	img.onload = () => {
-		ctx.drawImage(img, 0, 0, width_map, height_map);
+		ctx.drawImage(img, 0, 0, width_map, height_map); //Draw the image in the right place
 
 		// starting point (light green rectangle)
 		ctx.fillStyle = "rgba(0, 255, 0, 0.5)";
@@ -89,66 +96,103 @@ const drawMap = (canvas: HTMLCanvasElement) => {
 		// canvas height
 		var canvas_height = canvas.height - 30;
 		// no of vertical grid lines
-		var num_lines_x = Math.floor(canvas_height / grid_size);
+		var num_lines_x = Math.ceil(canvas_height / grid_size);
 		// no of horizontal grid lines
 		var num_lines_y = Math.floor(canvas_width / grid_size);
+
+		// Draw grid points
+		for (var i = 0; i < num_lines_y; i++) {
+			for (var j = 0; j <= num_lines_x; j++) {
+				ctx.beginPath();
+				ctx.arc(i * grid_size, j * grid_size, 1.5, 0, 2 * Math.PI);
+				ctx.fillStyle = "#FFFFFF";
+				ctx.fill();
+				ctx.closePath();
+			}
+		}
+
 		// Draw grid lines along X-axis
-		for (var i = 0; i <= num_lines_x; i++) {
-			ctx.beginPath();
-			ctx.lineWidth = 1;
+		// for (var i = 0; i <= num_lines_x; i++) {
+		// 	ctx.beginPath();
+		// 	ctx.lineWidth = 1;
 
-			// If line represents X-axis draw in different color
-			if (i == x_axis_distance_grid_lines) {
-				ctx.setLineDash([]);
-				ctx.strokeStyle = "#000000";
-			} else {
-				// const totalSize = canvas_height / num_lines_y;
-				// ctx.setLineDash([totalSize / 2, totalSize / 2]);
-				ctx.strokeStyle = "#e9e9e9";
-			}
+		// 	// If line represents X-axis draw in different color
+		// 	if (i == x_axis_distance_grid_lines) {
+		// 		ctx.setLineDash([]);
+		// 		ctx.strokeStyle = "#000000";
+		// 	} else {
+		// 		// const totalSize = canvas_height / num_lines_y;
+		// 		// ctx.setLineDash([totalSize / 2, totalSize / 2]);
+		// 		ctx.strokeStyle = "#e9e9e9";
+		// 	}
 
-			if (i == num_lines_x) {
-				ctx.moveTo(0, grid_size * i);
-				ctx.lineTo(canvas_width, grid_size * i);
-			} else {
-				ctx.moveTo(0, grid_size * i + 0.5);
-				ctx.lineTo(canvas_width, grid_size * i + 0.5);
-			}
-			ctx.stroke();
-		}
+		// 	if (i == num_lines_x) {
+		// 		ctx.moveTo(0, grid_size * i);
+		// 		ctx.lineTo(canvas_width, grid_size * i);
+		// 	} else {
+		// 		ctx.moveTo(0, grid_size * i + 0.5);
+		// 		ctx.lineTo(canvas_width, grid_size * i + 0.5);
+		// 	}
+		// 	ctx.stroke();
+		// }
+
 		// Draw grid lines along Y-axis
-		for (i = 0; i <= num_lines_y; i++) {
-			ctx.beginPath();
-			ctx.lineWidth = 1;
+		// for (i = 0; i <= num_lines_y; i++) {
+		// 	ctx.beginPath();
+		// 	ctx.lineWidth = 1;
 
-			// If line represents Y-axis draw in different color
-			if (i == y_axis_distance_grid_lines) {
-				ctx.setLineDash([]);
-				ctx.strokeStyle = "#000000";
-			} else {
-				// const totalSize = canvas_width / num_lines_x;
-				// ctx.setLineDash([totalSize / 2, totalSize / 2]);
-				ctx.strokeStyle = "#e9e9e9";
-			}
+		// 	// If line represents Y-axis draw in different color
+		// 	if (i == y_axis_distance_grid_lines) {
+		// 		ctx.setLineDash([]);
+		// 		ctx.strokeStyle = "#000000";
+		// 	} else {
+		// 		// const totalSize = canvas_width / num_lines_x;
+		// 		// ctx.setLineDash([totalSize / 2, totalSize / 2]);
+		// 		ctx.strokeStyle = "#e9e9e9";
+		// 	}
 
-			if (i == num_lines_y) {
-				ctx.moveTo(grid_size * i, 0);
-				ctx.lineTo(grid_size * i, canvas_height);
-			} else {
-				ctx.moveTo(grid_size * i + 0.5, 0);
-				ctx.lineTo(grid_size * i + 0.5, canvas_height);
-			}
-			ctx.stroke();
-		}
+		// 	if (i == num_lines_y) {
+		// 		ctx.moveTo(grid_size * i, 0);
+		// 		ctx.lineTo(grid_size * i, canvas_height);
+		// 	} else {
+		// 		ctx.moveTo(grid_size * i + 0.5, 0);
+		// 		ctx.lineTo(grid_size * i + 0.5, canvas_height);
+		// 	}
+		// 	ctx.stroke();
+		// }
+
+		//TO DEBUG
+
+		//Saves the original origin of the canvas
+		ctx.save();
+
+		//Translates the canvas and its origin
 		ctx.translate(
 			y_axis_distance_grid_lines * grid_size,
 			x_axis_distance_grid_lines * grid_size
 		);
-		// Ticks marks along the positive X-axis
-		for (i = 1; i < num_lines_y - y_axis_distance_grid_lines; i++) {
+
+		// Draw X-axis
+		ctx.beginPath(); //starts a new path for the line
+		ctx.lineWidth = 2; // sets the width of the line
+		ctx.strokeStyle = "#FFFFFF"; //sets the color of the line
+		ctx.moveTo(-y_axis_distance_grid_lines * grid_size, 0); //starting point
+		ctx.lineTo(canvas_width - (y_axis_distance_grid_lines + 0.5) * grid_size, 0); //ending point
+		ctx.stroke(); // draws the line on the canvas
+
+		//Draw Y-axis
+		ctx.beginPath();
+		ctx.lineWidth = 2;
+		ctx.strokeStyle = "#FFFFFF";
+		ctx.moveTo(0, -x_axis_distance_grid_lines * grid_size);
+		ctx.lineTo(0, canvas_height - (x_axis_distance_grid_lines - 0.5) * grid_size);
+		ctx.stroke();
+
+		//Ticks marks along the positive X-axis
+		for (var i = 1; i < num_lines_y - y_axis_distance_grid_lines; i++) {
 			ctx.beginPath();
 			ctx.lineWidth = 1;
-			ctx.strokeStyle = "#000000";
+			ctx.strokeStyle = "#FFFFFF";
 			// Draw a tick mark 6px long (-3 to 3)
 			ctx.moveTo(grid_size * i + 0.5, -3);
 			ctx.lineTo(grid_size * i + 0.5, 3);
@@ -166,7 +210,7 @@ const drawMap = (canvas: HTMLCanvasElement) => {
 		for (i = 1; i < y_axis_distance_grid_lines; i++) {
 			ctx.beginPath();
 			ctx.lineWidth = 1;
-			ctx.strokeStyle = "#000000";
+			ctx.strokeStyle = "#FFFFFF";
 			// Draw a tick mark 6px long (-3 to 3)
 			ctx.moveTo(-grid_size * i + 0.5, -3);
 			ctx.lineTo(-grid_size * i + 0.5, 3);
@@ -185,7 +229,7 @@ const drawMap = (canvas: HTMLCanvasElement) => {
 		for (i = 1; i < num_lines_x - x_axis_distance_grid_lines; i++) {
 			ctx.beginPath();
 			ctx.lineWidth = 1;
-			ctx.strokeStyle = "#000000";
+			ctx.strokeStyle = "#FFFFFF";
 			// Draw a tick mark 6px long (-3 to 3)
 			ctx.moveTo(-3, grid_size * i + 0.5);
 			ctx.lineTo(3, grid_size * i + 0.5);
@@ -204,7 +248,7 @@ const drawMap = (canvas: HTMLCanvasElement) => {
 		for (i = 1; i < x_axis_distance_grid_lines; i++) {
 			ctx.beginPath();
 			ctx.lineWidth = 1;
-			ctx.strokeStyle = "#000000";
+			ctx.strokeStyle = "#FFFFFF";
 			// Draw a tick mark 6px long (-3 to 3)
 			ctx.moveTo(-3, -grid_size * i + 0.5);
 			ctx.lineTo(3, -grid_size * i + 0.5);
@@ -218,6 +262,9 @@ const drawMap = (canvas: HTMLCanvasElement) => {
 				-grid_size * i + 3
 			);
 		}
+
+		//restores the original position of the canvas
+		ctx.restore();
 	};
 };
 
