@@ -23,6 +23,7 @@ export default function App({ label }: Props) {
 				onChange={({ target: { value: radius } }) => {
 					onChange(parseInt(radius));
 				}}
+				className={styles.slider}
 			/>
 		</div>
 	);
