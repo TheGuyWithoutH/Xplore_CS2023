@@ -92,23 +92,34 @@ export default ({ mode }: { mode: Mode }) => {
 					<div>
 						<h3>Wheels</h3>
 						<div className={styles.InfoArrangement}>
-							<div style={{ marginRight: "20px" }}>
-								<p>Wheel FL: </p>
-								<p>Wheel FR: </p>
-								<p>Wheel RL: </p>
-								<p>Wheel RR: </p>
+							<div className={styles.InfoArrangement}>
+								<div style={{ marginRight: "10px" }}>
+									<p>Wheel FL: </p>
+									<p>Wheel FR: </p>
+									<p>Wheel RL: </p>
+									<p>Wheel RR: </p>
+								</div>
+								<div style={{ marginRight: "30px" }}>
+									<p>{WheelFL}°</p>
+									<p>{WheelFR}°</p>
+									<p>{WheelRL}°</p>
+									<p>{WheelRR}°</p>
+								</div>
 							</div>
-							<div>
-								<p>{WheelFL}°</p>
-								<p>{WheelFR}°</p>
-								<p>{WheelRL}°</p>
-								<p>{WheelRR}°</p>
-							</div>
+
+							{/* <div className={styles.InfoArrangement}>
+								<div style={{ marginRight: "10px" }}>
+									<p>Wheel RL: </p>
+									<p>Wheel RR: </p>
+								</div>
+								<div>
+									<p>{WheelFL}°</p>
+									<p>{WheelFR}°</p>
+								</div>
+							</div> */}
 						</div>
 					</div>
-
-					<div className={styles.InfoSpeed}></div>
-					<div className={styles.InfoWheel}></div>
+					<div className="Image of rover"> </div>
 				</div>
 				<TaskControl task={Task.NAVIGATION} />
 			</div>

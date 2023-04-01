@@ -17,41 +17,11 @@ export default ({ mode }: { mode: Exclude<Mode, Mode.SEMI_AUTONOMOUS> }) => {
 			<JointPositions />
 
 			<div className={styles.container}>
-				<Button
-					text="Button 1"
-					size={Size.SMALL}
-					theme={Themes.BROWN}
-					onClick={() => {}}
-					radius={10}
-				/>
-				<Button
-					text="Button 2"
-					size={Size.SMALL}
-					theme={Themes.BROWN}
-					onClick={() => {}}
-					radius={10}
-				/>
-				<Button
-					text="Button 3"
-					size={Size.SMALL}
-					theme={Themes.BROWN}
-					onClick={() => {}}
-					radius={10}
-				/>
-				<Button
-					text="Button 4"
-					size={Size.SMALL}
-					theme={Themes.BROWN}
-					onClick={() => {}}
-					radius={10}
-				/>
-				<Button
-					text="Button 5"
-					size={Size.SMALL}
-					theme={Themes.BROWN}
-					onClick={() => {}}
-					radius={10}
-				/>
+				<button className={styles.button}>Button 1</button>
+				<button className={styles.button}>Button 2</button>
+				<button className={styles.button}>Button 3</button>
+				<button className={styles.button}>Button 4</button>
+				<button className={styles.button}>Button 5</button>
 			</div>
 		</div>
 	);
