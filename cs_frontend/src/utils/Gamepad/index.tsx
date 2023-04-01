@@ -66,7 +66,9 @@ class GamepadController {
 		const state: GamepadControllerState = {
 			controller: this.gamepad,
 			isConnected: this.isConnected,
-			buttons: this.gamepad ? this.gamepad.buttons.map((button) => button.pressed) : [],
+			buttons: this.gamepad
+				? this.gamepad.buttons.map((button) => button.pressed).slice(0, 17)
+				: [],
 			axes: this.gamepad ? this.gamepad.axes : [],
 		};
 
