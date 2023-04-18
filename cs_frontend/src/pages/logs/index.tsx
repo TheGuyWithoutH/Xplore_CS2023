@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import BackButton from "../../components/BackButton";
 import Background from "../../components/Background";
 import styles from "./style.module.sass";
@@ -6,6 +6,12 @@ import logs from "./test_logs.json";
 
 export default () => {
 	const [mode, setMode] = React.useState("logs");
+	const bottomRef = useRef<HTMLDivElement | null>(null);
+
+	useEffect(() => {
+		// 👇️ scroll to bottom every time messages change
+		bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+	}, [logs]);
 
 	const getColorType = (type: string) => {
 		switch (type) {
@@ -51,6 +57,7 @@ export default () => {
 									<div className={styles.LogMessage}>{log.message}</div>
 								</div>
 							))}
+							<div ref={bottomRef}></div>
 						</div>
 					</div>
 				</div>
