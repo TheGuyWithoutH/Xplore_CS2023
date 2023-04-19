@@ -17,7 +17,12 @@ export default ({ mode }: { mode: Exclude<Mode, Mode.SEMI_AUTONOMOUS> }) => {
 		<div className="page">
 			<Background />
 			<BackButton />
-			<PageHeader title="Maintenance" />
+			<PageHeader
+				title="Maintenance"
+				settings
+				optionTitle="Cameras"
+				options={["Camera 1", "Camera 2", "Camera 3"]}
+			/>
 			<DistanceHint distance={10} />
 			<JointPositions />
 
