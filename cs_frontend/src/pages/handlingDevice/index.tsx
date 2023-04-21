@@ -11,6 +11,8 @@ import { Size } from "../../utils/size.type";
 import GamepadHint from "../../components/GamepadHint";
 import PageHeader from "../../components/PageHeader";
 import DistanceHint from "../../components/DistanceHint";
+import ModeSlider from "../../components/ModeSlider";
+import JointSpeed from "../../components/JointSpeed";
 
 export default ({ mode }: { mode: Exclude<Mode, Mode.SEMI_AUTONOMOUS> }) => {
 	return (
@@ -19,15 +21,23 @@ export default ({ mode }: { mode: Exclude<Mode, Mode.SEMI_AUTONOMOUS> }) => {
 			<BackButton />
 			<PageHeader title="Maintenance" />
 			<DistanceHint distance={10} />
-			<JointPositions />
 
-			<div className={styles.container}>
-				<button className={styles.button}>Button 1</button>
-				<button className={styles.button}>Button 2</button>
-				<button className={styles.button}>Button 3</button>
-				<button className={styles.button}>Button 4</button>
-				<button className={styles.button}>Button 5</button>
+			<div className={styles.jointContainer}>
+				<JointPositions />
+				<JointSpeed joint1={0} joint2={0} joint3={0} joint4={0} joint5={0} joint6={0} />
 			</div>
+
+			<div className={styles.globalContainer}>
+				<div className={styles.container}>
+					<button className={styles.button}>Button 1</button>
+					<button className={styles.button}>Button 2</button>
+					<button className={styles.button}>Button 3</button>
+					<button className={styles.button}>Button 4</button>
+					<button className={styles.button}>Button 5</button>
+				</div>
+				<ModeSlider />
+			</div>
+
 			<GamepadHint />
 		</div>
 	);
