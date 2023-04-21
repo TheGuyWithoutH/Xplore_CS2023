@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { drawPoint } from "../components/MAP2";
 
 type Goal = { x: number; y: number; o: number };
 
@@ -12,6 +13,12 @@ export const useGoalTracker = () => {
 	const resetGoals = () => {
 		setGoals([]);
 	};
+
+	useEffect(() => {
+		goals.forEach((goal) => {
+			drawPoint(goal.x, goal.y);
+		});
+	}, [goals]);
 
 	return { goals, addGoal, resetGoals };
 };
