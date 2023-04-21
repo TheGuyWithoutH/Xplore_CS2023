@@ -2,7 +2,6 @@ import React from "react";
 import BackButton from "../../components/BackButton";
 import Background from "../../components/Background";
 import Map from "../../components/Map";
-import Map2 from "../../components/MAP2";
 import Button from "../../components/Button";
 import CurrentPosition from "../../components/CurrentPosition";
 import TaskControl from "../../components/TaskControl";
@@ -47,7 +46,7 @@ export default ({ mode }: { mode: Mode }) => {
 			<Background />
 			<BackButton />
 			<div className={styles.InfoContainer}>
-				<Map2
+				<Map
 					origin={{
 						//TO SET DURING COMPETITION
 						x: 345,

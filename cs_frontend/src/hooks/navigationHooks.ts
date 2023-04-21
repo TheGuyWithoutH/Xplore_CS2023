@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { drawPoint } from "../components/MAP2";
+import { drawPoint } from "../components/Map";
 
 type Goal = { id: number; x: number; y: number; o: number };
 
