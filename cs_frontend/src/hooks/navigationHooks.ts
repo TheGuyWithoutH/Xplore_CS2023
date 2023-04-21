@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { drawPoint } from "../components/MAP2";
 
-type Goal = { x: number; y: number; o: number };
+type Goal = { id: number; x: number; y: number; o: number };
 
 export const useGoalTracker = () => {
 	const [goals, setGoals] = useState<Goal[]>([]);
 
 	const addGoal = (x: number, y: number, o: number) => {
-		setGoals([...goals, { x, y, o }]);
+		const id = Date.now(); //Generate a unique id for the goal
+		setGoals([...goals, { id, x, y, o }]);
 	};
 
 	const resetGoals = () => {
 		setGoals([]);
+	};
+
+	const removeGoal = (id: number) => {
+		const newGoals = goals.filter((goal) => goal.id !== id);
+		setGoals(newGoals);
 	};
 
 	useEffect(() => {
@@ -20,5 +26,5 @@ export const useGoalTracker = () => {
 		});
 	}, [goals]);
 
-	return { goals, addGoal, resetGoals };
+	return { goals, addGoal, removeGoal, resetGoals };
 };

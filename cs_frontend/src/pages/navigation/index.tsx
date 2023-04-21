@@ -15,7 +15,7 @@ import { Size } from "../../utils/size.type";
 import { useGoalTracker } from "../../hooks/navigationHooks";
 
 export default ({ mode }: { mode: Mode }) => {
-	const { goals, addGoal, resetGoals } = useGoalTracker();
+	const { goals, addGoal, removeGoal, resetGoals } = useGoalTracker();
 
 	const handleAddGoal = () => {
 		// Get the values from the input fields
@@ -90,7 +90,13 @@ export default ({ mode }: { mode: Mode }) => {
 						/>
 						{goals.length > 0 && <h3>Next Goals</h3>}
 						{goals.map((goal, index) => (
-							<SuppressableCard key={index} x={goal.x} y={goal.y} o={goal.o} />
+							<SuppressableCard
+								key={goal.id}
+								x={goal.x}
+								y={goal.y}
+								o={goal.o}
+								removeGoal={() => removeGoal(goal.id)}
+							/>
 						))}
 					</div>
 				</div>
