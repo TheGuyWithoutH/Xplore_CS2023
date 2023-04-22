@@ -12,6 +12,8 @@ import { Cameras } from "../../utils/cameras.type";
 import useCameraManager from "../../hooks/cameraManager";
 import Timer from "../../components/Timer";
 import { Size } from "../../utils/size.type";
+import ModeSlider from "../../components/ModeSlider";
+import JointSpeed from "../../components/JointSpeed";
 
 export default ({ mode }: { mode: Exclude<Mode, Mode.SEMI_AUTONOMOUS> }) => {
 	const [camera, selectCamera] = useCameraManager(Cameras.CAM1);
@@ -44,15 +46,23 @@ export default ({ mode }: { mode: Exclude<Mode, Mode.SEMI_AUTONOMOUS> }) => {
 				optionsCallback={selectCamera}
 			/>
 			<DistanceHint distance={10} />
-			<JointPositions />
 
-			<div className={styles.container}>
-				<button className={styles.button}>Button 1</button>
-				<button className={styles.button}>Button 2</button>
-				<button className={styles.button}>Button 3</button>
-				<button className={styles.button}>Button 4</button>
-				<button className={styles.button}>Button 5</button>
+			<div className={styles.jointContainer}>
+				<JointPositions />
+				<JointSpeed joint1={0} joint2={0} joint3={0} joint4={0} joint5={0} joint6={0} />
 			</div>
+
+			<div className={styles.globalContainer}>
+				<div className={styles.container}>
+					<button className={styles.button}>Button 1</button>
+					<button className={styles.button}>Button 2</button>
+					<button className={styles.button}>Button 3</button>
+					<button className={styles.button}>Button 4</button>
+					<button className={styles.button}>Button 5</button>
+				</div>
+				<ModeSlider />
+			</div>
+
 			<GamepadHint />
 
 			<Timer end={Date.now() + 10000} size={Size.SMALL} />
