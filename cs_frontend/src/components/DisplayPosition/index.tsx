@@ -18,15 +18,15 @@ export default function MyComponent({ x, y, o }: Props) {
 				{/* WHAT TO DO WITH THE INPUTTED VALUES? */}
 				<div className={styles.finalContainer}>
 					X
-					<input type="text" id="input-1" name="input-1" />
+					<input type="number" id="input-1" name="input-1" max={99} />
 				</div>
 				<div className={styles.finalContainer}>
 					Y
-					<input type="text" id="input-1" name="input-1" />
+					<input type="number" id="input-1" name="input-1" max={99} />
 				</div>
 				<div className={styles.finalContainer}>
 					O
-					<input type="text" id="input-1" name="input-1" />
+					<input type="number" id="input-1" name="input-1" max={360} />
 				</div>
 			</div>
 		</div>

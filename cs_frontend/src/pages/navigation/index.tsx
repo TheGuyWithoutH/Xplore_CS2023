@@ -11,6 +11,7 @@ import { Task } from "../../utils/tasks.type";
 import { Themes } from "../../utils/themes";
 import styles from "./style.module.sass";
 import { Size } from "../../utils/size.type";
+import Timer from "../../components/Timer";
 
 export default ({ mode }: { mode: Mode }) => {
 	// TODO Replace all these constants by the call to functions
@@ -121,6 +122,7 @@ export default ({ mode }: { mode: Mode }) => {
 					</div>
 					<div className="Image of rover"> </div>
 				</div>
+				<Timer end={Date.now() + 10000} size={Size.SMALL} />
 				<TaskControl task={Task.NAVIGATION} />
 			</div>
 		</div>

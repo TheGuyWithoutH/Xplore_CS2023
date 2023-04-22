@@ -16,6 +16,11 @@ function useCameraSelector(item: Cameras) {
 			setImage(data.message);
 		};
 
+		cameraSocket.onerror = (e) => {
+			console.log(e);
+			setSocket(null);
+		};
+
 		setSocket(cameraSocket);
 	}, []);
 
