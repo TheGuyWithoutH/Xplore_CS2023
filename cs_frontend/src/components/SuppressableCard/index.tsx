@@ -3,16 +3,19 @@ import { FaTimes } from "react-icons/fa";
 import styles from "./style.module.sass";
 
 interface Props {
+	key: number;
 	x: number;
 	y: number;
 	o: number;
+	removeGoal: (index: number) => void;
 }
 
-function Card({ x, y, o }: Props) {
+function Card({ key, x, y, o, removeGoal }: Props) {
 	const [visible, setVisible] = useState(true);
 
 	const handleDismiss = () => {
 		setVisible(false);
+		removeGoal(key);
 	};
 
 	return (
